@@ -1,4 +1,4 @@
-package com.javatechie.spring.kafka.api;
+package com.rapidstar.spring.kafka.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -15,17 +15,17 @@ public class KafkaPublisherApplication {
 	@Autowired
 	private KafkaTemplate<String, Object> template;
 
-	private String topic = "javatechie";
+	private String topic = "rapidstar";
 
 	@GetMapping("/publish/{name}")
 	public String publishMessage(@PathVariable String name) {
-		template.send(topic, "Hi " + name + " Welcome to java techie");
+		template.send(topic, "Hi " + name + " Welcome to Rapidstar");
 		return "Data published";
 	}
 
 	@GetMapping("/publishJson")
 	public String publishMessage() {
-		User user = new User(2532, "User88", new String[] { "Bangalore", "BTM", "house 90" });
+		User user = new User(2532, "User88", new String[] { "Seoul", "BTM", "house 90" });
 		template.send(topic, user);
 		return "Json Data published";
 	}
